@@ -1,0 +1,80 @@
+.h1-login {
+    font-weight: bold;
+    text-align: center;
+}
+
+.body-admin {
+    text-align: center;
+    margin: 100px;
+}
+
+
+.btn-success-update {
+
+    padding: 10px 50px;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.btn-small {
+    padding: 2px 11px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+.margin-createUser{
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.btn-success-userList {
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-success-products {
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.form-group {
+    text-align: left;
+    width: auto;
+    margin: 10px auto;
+}
+.btn-border-radius {
+    border-radius: 8px;
+    padding: 5px auto;
+    margin: 4px 4px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.noBorder{
+    border: none;
+}
+
+.btn-redirect {
+    border-radius: 8px;
+    padding: 5px auto;
+    margin: 4px 4px;
+    font-size: 20px;
+    text-align: center;
+    float: right;
+}
+
+li.right{
+    float: right;
+}

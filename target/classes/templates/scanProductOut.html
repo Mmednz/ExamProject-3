@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet"/>
+    <title>Scan Product</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+
+        <ul class="navbar-nav mr.auto">
+            <li class="nav-item"><a class="nav-link" href="/scanProductIn">Modtagelse</a></li>
+            <li class="nav-item"><a class="nav-link" href="/scanProductOut">Udlevering</a></li>
+            <li class="nav-item"><a class="nav-link" href="/inStock">Varelager </a></li>
+            <li class="nav-item"><a class="nav-link" href="/products">Produktformer</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Log ud</a></li>
+        </ul>
+    </div>
+</nav><br/>
+<div class="container">
+    <h1>Udlevering</h1>
+    <div th:if="${productDoesNotExist}">
+        <div class="alert alert-danger">
+            Produktet eksistere ikke. Check de intastede informationer.
+        </div>
+    </div>
+    <div th:if="${productIsNotTheOldest}">
+        <div class="alert alert-danger">
+            Produktet er ikke det ældste. Se ældste product nedenfor.
+        </div>
+    </div>
+    <form th:action="@{/scanProductOut}" method="post" th:object="${productInStock}">
+        <div class="form-group">
+            <input type="text" th:field="*{product.barcode}" required="required" pattern="[0-9]*" class="form-control input-sm" placeholder="Stregkode"/>
+        </div>
+        <div class="form-group">
+        <input type="date" th:field="*{expirationDate}" required="required" class="form-control" placeholder="Exipration Date"/>
+    </div>
+        <div class="form-group">
+            <input type="submit" class="form-control btn btn-success" value="Submit"/>
+        </div>
+    </form>
+    <div th:if="${productIsNotTheOldest}">
+        <table class="table-hover table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Produkt navn</th>
+                <th>Type</th>
+                <th>Kvantitet</th>
+                <th>Modtagelsesdato</th>
+                <th>Udløbsdato</th>
+                <th>Modtager</th>
+                <th>Leverandør</th>
+                <th>Stregkode</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${oldestProduct}">
+                <td th:text="${oldestProduct.getProduct().getName()}"></td>
+                <td th:text="${oldestProduct.getProduct().getType()}"></td>
+                <td th:text="${oldestProduct.getQuantity()}"></td>
+                <td th:text="${oldestProduct.getReceiptDate()}"></td>
+                <td th:text="${oldestProduct.getExpirationDate()}"></td>
+                <td th:text="${oldestProduct.getUser()}"></td>
+                <td th:text="${oldestProduct.getProduct().getSupplier().getSupplier()}"></td>
+                <td th:text="${oldestProduct.getProduct().getBarcode()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

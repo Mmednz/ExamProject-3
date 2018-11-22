@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet"/>
+    <title>Scan Product</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+
+        <ul class="navbar-nav mr.auto">
+            <li class="nav-item"><a class="nav-link" href="/scanProductIn">Modtagelse</a></li>
+            <li class="nav-item"><a class="nav-link" href="/scanProductOut">Udlevering</a></li>
+            <li class="nav-item"><a class="nav-link" href="/inStock">Varelager </a></li>
+            <li class="nav-item"><a class="nav-link" href="/products">Produktformer</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Log ud</a></li>
+        </ul>
+    </div>
+</nav><br/>
+<div class="container">
+    <h1>Modtagelse</h1>
+    <form th:action="@{/scanProductIn}" method="post" th:object="${productInStock}">
+        <div class="form-group">
+            <input type="text" th:name="product.barcode" required="required" pattern="[0-9]*" class="form-control input-sm" placeholder="Stregkode"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success btn-border-radius" value="Næste"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

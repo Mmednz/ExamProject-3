@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Delete User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+    <link href="styleSheet.css" rel="stylesheet"/>
+</head>
+<body-admin>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+
+        <ul class="navbar-nav mr.auto">
+            <li class="nav-item"><a class="nav-link" href="/inStock">Varelager </a></li>
+            <li class="nav-item"><a class="nav-link" href="/userList">Merarbejder</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Log ud</a></li>
+        </ul>
+    </div>
+</nav><br/>
+<div class="container">
+    <h1>Vil du slette:</h1>
+    <form th:action="@{/deleteUser(id=${user.id})}" method="post" th:object="${user}">
+        <h3>Fornavn:</h3>
+        <p th:text="${user.getFirstname()}"></p>
+        <h3>Efternavn:</h3>
+        <p th:text="${user.getLastname()}"></p>
+        <h3>Rolle:</h3>
+        <p th:text="${user.getRole()}"></p>
+        <input type="submit" value="Slet" class="btn btn-success btn-border-radius"/>
+        <a href="/userList" class="btn btn-danger btn-border-radius">Afbryd</a>
+    </form>
+</div>
+</body-admin>
+</html>
